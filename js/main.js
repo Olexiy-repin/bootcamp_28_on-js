@@ -14,16 +14,20 @@
 //   age: 30,
 
 //   showThis() {
+//     // this = user;
 //     console.log('This --->', this);
 //   },
 
 //   showName() {
+//     // this = user;
 //     console.log(this.name);
 //   },
 // };
 
-//TODO: Розглянемо як this поводиться у звичайних функціях (суворий, не суворий режим)
+// user.showThis();
+// user.showName();
 
+//TODO: Розглянемо як this поводиться у звичайних функціях (суворий, не суворий режим)
 //? Function expression
 // const greet = function () {
 //   console.log('This --->', this);
@@ -62,6 +66,24 @@
 //   age: 30,
 // };
 
+// user.showUserThis = showThis;
+// user.showUserName = showName;
+
+// showThis();
+// user.showUserThis();
+
+// // showName();
+// user.showUserName();
+
+// const anotherUser = {
+//   name: 'Etta Burgess',
+//   age: 40,
+// };
+
+// anotherUser.showUserName = showName;
+
+// anotherUser.showUserName();
+
 //TODO: Виклик методу об'єкта без контексту
 // const user = {
 //   name: 'Luis',
@@ -97,6 +119,7 @@
 // };
 
 // const someFunction = function (callback) {
+//   // let callback = user.showUserThis;
 //   callback();
 // };
 
@@ -107,9 +130,15 @@
 //   name: 'Luis',
 //   age: 30,
 
-//   changeAge: newAge => {
-//     console.log(`this ---->`, this);
-//     this.age = newAge;
+//   changeUserAge(newAge) {
+//     console.log(this);
+
+//     const changeAge = newAge => {
+//       console.log(`this ---->`, this);
+//       this.age = newAge;
+//     };
+
+//     changeAge(newAge);
 //   },
 // };
 
@@ -119,7 +148,6 @@
 /*
 ? Яким буде результат виконання цього коду?
 */
-
 // let user = {
 //   name: 'Джон',
 
@@ -138,7 +166,6 @@
 ? Тут функція makeUser повертає об'єкт.
 ? Яким буде результат при зверненні до об'єкта ref? Чому?
 */
-
 // const makeUser = function () {
 //   return {
 //     name: 'Джон',
@@ -148,23 +175,24 @@
 
 // const user = makeUser();
 
-// console.log(user);
 // console.log(user.ref.name);
 
 /*
 ? Яким буде результат console.log
 */
-
 // function makeUser() {
+//   // this = undefined;
+
 //   return {
 //     name: 'Джон',
 //     ref() {
+//       // this = user;
 //       return this;
 //     },
 //   };
 // }
 
-// let user = makeUser();
+// const user = makeUser();
 
 // console.log(user);
 // console.log(user.ref().name);
@@ -172,20 +200,22 @@
 /*
 ? Це ladder (сходи) – об'єкт, який дозволяє підніматися вгору та спускатися:
 */
-
 // const ladder = {
 //   step: 0,
 
 //   up() {
 //     this.step += 1;
+//     return this;
 //   },
 
 //   down() {
 //     this.step -= 1;
+//     return this;
 //   },
 
 //   showStep() {
 //     console.log(this.step);
+//     return this;
 //   },
 // };
 
@@ -197,5 +227,4 @@
 // ladder.showStep();
 
 // Змініть код методів up, down та showStep таким чином, щоб їх виклик можна було зробити по ланцюжку, наприклад:
-
 // ladder.up().up().down().showStep();

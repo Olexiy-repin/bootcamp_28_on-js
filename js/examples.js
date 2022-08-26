@@ -10,7 +10,15 @@
 //     { name: 'Ruby', price: 800, quantity: 2 },
 //   ],
 
-//   calcTotalPrice(stoneName) {},
+//   calcTotalPrice(stoneName) {
+//     const findedStone = this.stones.find(stone => stone.name === stoneName);
+
+//     if (findedStone === undefined) {
+//       return 'Такого каменя не знайдено';
+//     }
+
+//     return findedStone.price * findedStone.quantity;
+//   },
 // };
 
 // console.log(chopShop.calcTotalPrice('Emerald')); // 5200
@@ -29,34 +37,36 @@
 //     const newContact = {
 //       list: 'default',
 //       ...contact,
-//       id: generateId(),
-//       createdAt: getDate(),
+//       id: this.generateId(),
+//       createdAt: this.getDate(),
 //     };
-//     contacts.push(newContact);
+
+//     this.contacts.push(newContact);
 //   },
 
 //   generateId() {
 //     return '_' + Math.random().toString(36).substr(2, 9);
 //   },
+
 //   getDate() {
 //     return Date.now();
 //   },
 // };
 
-// console.log(
-//   phonebook.add({
-//     name: 'Mango',
-//     email: 'mango@mail.com',
-//     list: 'friends',
-//   })
-// );
+// phonebook.add({
+//   name: 'Mango',
+//   email: 'mango@mail.com',
+//   list: 'friends',
+// });
 
-// console.log(
-//   phonebook.add({
-//     name: 'Poly',
-//     email: 'poly@hotmail.com',
-//   })
-// );
+// console.log(phonebook.contacts);
+
+// phonebook.add({
+//   name: 'Poly',
+//   email: 'poly@hotmail.com',
+// });
+
+// console.log(phonebook.contacts);
 
 /*
 ? Створіть об'єкт calculator із трьома методами:
@@ -66,6 +76,31 @@
 ? mult() - перемножує збережені значення та повертає результат.
 */
 
-// calculator.read(10, 20);
-// console.log(calculator.add());
-// console.log(calculator.mult());
+const calculator = {
+  read(a, b) {
+    this.firstNum = a;
+    this.secondNum = b;
+  },
+
+  add() {
+    return this.firstNum + this.secondNum;
+  },
+
+  mult() {
+    return this.firstNum * this.secondNum;
+  },
+};
+
+console.log(calculator);
+
+calculator.read(10, 20);
+
+console.log(calculator);
+console.log(calculator.add());
+console.log(calculator.mult());
+
+calculator.read(40, 30);
+
+console.log(calculator);
+
+console.log(calculator.add());

@@ -3,13 +3,19 @@
  */
 
 //* Функції це об'єкти зі своїми властивостями та методами
+// const fn = function () {
+//   console.log('Hello');
+// };
+
+// fn.test = 5;
+// console.dir(fn);
+// console.log(fn.test);
 
 //* call та apply
-
 //? Викличте функцію showFullName у контексті об'єкта user
-
-// const showFullName = function (message) {
+// const showFullName = function (message, number) {
 //   console.log(`${message} ${this.firstName} ${this.lastName}`);
+//   console.log(number);
 // };
 
 // const user = {
@@ -18,12 +24,18 @@
 //   age: 30,
 // };
 
+// showFullName.call(user, 'Hello', 10);
+// showFullName.apply(user, ['Hello', 10]);
+
 //? Викличте функцію showFullName у контексті об'єкта anotherUser
 // const anotherUser = {
 //   firstName: 'Lottie',
 //   lastName: 'Burgess',
 //   age: 40,
 // };
+
+// showFullName.call(anotherUser, 'Hi', 20);
+// showFullName.apply(anotherUser, ['Hi', 20]);
 
 //* bind
 // const showFullName = function () {
@@ -35,6 +47,15 @@
 //   lastName: 'Vasquez',
 //   age: 30,
 // };
+
+// const showUserFullName = function () {
+//   this = user;
+//   console.log(`${this.firstName} ${this.lastName}`);
+// }
+
+// const showUserFullName = showFullName.bind(user);
+
+// showUserFullName();
 
 //* Метод об'єкта у ролі колбека
 
@@ -52,15 +73,19 @@
 // };
 
 // const someFunction = function (callback) {
+//   // callback = function() {
+//   //   this = user;
+//   //   console.log(`this name is: ${this.name}`);
+//   // }
+
 //   callback();
 // };
 
-// someFunction(user.showName(user));
+// someFunction(user.showName.bind(user));
 
 /*
 ? Що виведе код?
 */
-
 // const f = function () {
 //   console.log(this.name);
 // };
@@ -81,8 +106,10 @@
 ? Виклик checkPassword() у наведеному нижче коді повинен перевірити пароль та викликати user.loginOk/loginFail залежно від відповіді.
 ? Однак його виклик призводить до помилки. Чому?
  */
-
 // const checkPassword = function (ok, fail) {
+//   // ok = user.loginOk
+//   // fail = user.loginFail
+
 //   const password = 'rockstar';
 
 //   if (password === 'rockstar') {
@@ -104,4 +131,4 @@
 //   },
 // };
 
-// checkPassword(user.loginOk(user), user.loginFail(user));
+// checkPassword(user.loginOk.bind(user), user.loginFail.bind(user));
