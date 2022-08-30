@@ -9,52 +9,52 @@
 ? Додай метод updatePostCount(value), який у параметрі value приймає кількість постів, які потрібно додати користувачеві.
 */
 
-class Blogger {
-  constructor(bloggerInfo) {
-    // this = {};
-    const { email, age, numberOfPosts, topics } = bloggerInfo;
+// class Blogger {
+//   constructor(bloggerInfo) {
+//     // this = {};
+//     const { email, age, numberOfPosts, topics } = bloggerInfo;
 
-    this.email = email;
-    this.age = age;
-    this.numberOfPosts = numberOfPosts;
-    this.topics = topics;
-    // return this;
-  }
+//     this.email = email;
+//     this.age = age;
+//     this.numberOfPosts = numberOfPosts;
+//     this.topics = topics;
+//     // return this;
+//   }
 
-  getInfo() {
-    return `Blogger ${this.email} is ${this.age} years old and has ${this.numberOfPosts} posts.`;
-  }
+//   getInfo() {
+//     return `Blogger ${this.email} is ${this.age} years old and has ${this.numberOfPosts} posts.`;
+//   }
 
-  updatePostCount(value) {
-    if (value > 0) {
-      this.numberOfPosts += value;
-    }
-  }
-}
+//   updatePostCount(value) {
+//     if (value > 0) {
+//       this.numberOfPosts += value;
+//     }
+//   }
+// }
 
-const mango = new Blogger({
-  email: 'mango@mail.com',
-  age: 24,
-  numberOfPosts: 20,
-  topics: ['tech', 'cooking'],
-});
+// const mango = new Blogger({
+//   email: 'mango@mail.com',
+//   age: 24,
+//   numberOfPosts: 20,
+//   topics: ['tech', 'cooking'],
+// });
 
-console.log(mango);
-console.log(mango.getInfo()); // Blogger mango@mail.com is 24 years old and has 20 posts
-mango.updatePostCount(5);
-console.log(mango.getInfo()); // Blogger mango@mail.com is 24 years old and has 25 posts
+// console.log(mango);
+// console.log(mango.getInfo()); // Blogger mango@mail.com is 24 years old and has 20 posts
+// mango.updatePostCount(5);
+// console.log(mango.getInfo()); // Blogger mango@mail.com is 24 years old and has 25 posts
 
-const poly = new Blogger({
-  email: 'poly@mail.com',
-  age: 19,
-  numberOfPosts: 17,
-  topics: ['sports', 'gaming', 'health'],
-});
+// const poly = new Blogger({
+//   email: 'poly@mail.com',
+//   age: 19,
+//   numberOfPosts: 17,
+//   topics: ['sports', 'gaming', 'health'],
+// });
 
-console.log(poly);
-console.log(poly.getInfo()); // Blogger poly@mail.com is 19 years old and has 17 posts
-poly.updatePostCount(4);
-console.log(poly.getInfo()); // Blogger poly@mail.com is 19 years old and has 21 posts
+// console.log(poly);
+// console.log(poly.getInfo()); // Blogger poly@mail.com is 19 years old and has 17 posts
+// poly.updatePostCount(4);
+// console.log(poly.getInfo()); // Blogger poly@mail.com is 19 years old and has 21 posts
 
 /*
 ? Напиши клас Storage, який створює об'єкти для управління складом товарів.
@@ -66,20 +66,68 @@ console.log(poly.getInfo()); // Blogger poly@mail.com is 19 years old and has 21
 ? addItem(item) - отримує новий товар та додає його до поточних.
 ? removeItem(item) - отримує товар і, якщо він є, видаляє його з поточних.
 */
+// class Storage {
+//   constructor(items) {
+//     this.items = items;
+//   }
+
+//   getItems() {
+//     return this.items;
+//   }
+
+//   addItem(item) {
+//     this.items.push(item);
+//   }
+
+//   removeItem(item) {
+//     if (this.items.includes(item)) {
+//       const idxOfItem = this.items.indexOf(item);
+
+//       this.items.splice(idxOfItem, 1);
+//     }
+//   }
+// }
+
 // const storage = new Storage(['🍎', '🍋', '🍇', '🍑']);
 
-// console.table(storage.getItems()); // [ '🍎', '🍋', '🍇', '🍑' ]
+// console.log(storage.getItems()); // [ '🍎', '🍋', '🍇', '🍑' ]
 
 // storage.addItem('🍌');
-// console.table(storage.getItems()); // [ '🍎', '🍋', '🍇', '🍑', '🍌' ]
+// console.log(storage.getItems()); // [ '🍎', '🍋', '🍇', '🍑', '🍌' ]
 
 // storage.removeItem('🍋');
-// console.table(storage.getItems()); // [ '🍎', '🍇', '🍑', '🍌' ]
-
+// console.log(storage.getItems()); // [ '🍎', '🍇', '🍑', '🍌' ]
 /*
 ? Напиши клас User який створює об'єкт із властивостями login та email.
 ? Оголоси приватні властивості #login та #email, доступ до яких зроби через геттер та сеттер login та email.
 */
+
+// class User {
+//   #login;
+//   #email;
+
+//   constructor({ login, email }) {
+//     this.#login = login;
+//     this.#email = email;
+//   }
+
+//   get login() {
+//     return this.#login;
+//   }
+
+//   set login(newLogin) {
+//     this.#login = newLogin;
+//   }
+
+//   get email() {
+//     return this.#email;
+//   }
+
+//   set email(newEmail) {
+//     this.#email = newEmail;
+//   }
+// }
+
 // const mango = new User({
 //   login: 'Mango',
 //   email: 'mango@dog.woof',
@@ -114,22 +162,52 @@ console.log(poly.getInfo()); // Blogger poly@mail.com is 19 years old and has 21
 ?
 ? Додай методи addNote(note), removeNote(text) та updatePriority(text, newPriority).
 */
+// class Notes {
+//   static Priority = {
+//     LOW: 'low',
+//     NORMAL: 'normal',
+//     HIGH: 'high',
+//   };
+
+//   constructor(notesArr) {
+//     this.items = notesArr;
+//   }
+
+//   addNote(note) {
+//     this.items.push(note);
+//   }
+
+//   removeNote(text) {
+//     const idxOfNote = this.items.findIndex(el => el.text === text);
+
+//     this.items.splice(idxOfNote, 1);
+//   }
+
+//   updatePriority(text, newPriority) {
+//     const note = this.items.find((el, idx, arr) => {
+//       return el.text === text;
+//     });
+
+//     note.priority = newPriority;
+//   }
+// }
+
 // const myNotes = new Notes([]);
 
 // myNotes.addNote({ text: 'Моя перша нотатка', priority: Notes.Priority.LOW });
-// console.log(myNotes.items);
+// console.log(myNotes);
 
 // myNotes.addNote({
 //   text: 'Моя друга нотатка',
 //   priority: Notes.Priority.NORMAL,
 // });
-// console.log(myNotes.items);
+// console.log(myNotes);
 
 // myNotes.removeNote('Моя перша нотатка');
-// console.log(myNotes.items);
+// console.log(myNotes);
 
 // myNotes.updatePriority('Моя друга нотатка', Notes.Priority.HIGH);
-// console.log(myNotes.items);
+// console.log(myNotes);
 
 /*
 ? Напишіть клас Toggle, який приймає об'єкт налаштувань {isOpen: boolean}
@@ -137,16 +215,32 @@ console.log(poly.getInfo()); // Blogger poly@mail.com is 19 years old and has 21
 ? За замовчуванням значення властивості on має бути false.
 */
 
-// const firstToggle = new Toggle({ isOpen: true });
-// console.group('firstToggle');
-// console.log(firstToggle.on);
-// firstToggle.toggle();
-// console.log(firstToggle.on);
-// console.groupEnd('firstToggle');
+class Toggle {
+  constructor(settings = {}) {
+    const { isOpen = false } = settings;
 
-// const secondToggle = new Toggle();
-// console.group('secondToggle');
-// console.log(secondToggle.on);
-// secondToggle.toggle();
-// console.log(secondToggle.on);
-// console.groupEnd('secondToggle');
+    this.on = isOpen;
+  }
+
+  toggle() {
+    this.on = !this.on;
+  }
+}
+
+const firstToggle = new Toggle({ isOpen: true });
+
+console.group('firstToggle');
+console.log(firstToggle.on);
+firstToggle.toggle();
+console.log(firstToggle.on);
+firstToggle.toggle();
+console.log(firstToggle.on);
+console.groupEnd('firstToggle');
+
+const secondToggle = new Toggle();
+
+console.group('secondToggle');
+console.log(secondToggle.on);
+secondToggle.toggle();
+console.log(secondToggle.on);
+console.groupEnd('secondToggle');

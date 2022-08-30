@@ -9,6 +9,8 @@ class User {
   #userLogin;
   #password;
 
+  static test = 5;
+
   constructor(userInfo) {
     // this = {};
     const { firstName, lastName, age = null, phoneNumber, login, password } = userInfo;
@@ -32,6 +34,11 @@ class User {
 
   changeFirstName(newFirstName) {
     this.firstName = newFirstName;
+    User.validateEmail();
+  }
+
+  static validateEmail() {
+    console.log('Hello');
   }
 }
 
@@ -45,7 +52,9 @@ const user1 = new User({
 });
 
 console.log(user1);
-console.log(user1.login);
 
-user1.login = 'test@gmail.com';
-console.log(user1);
+user1.changeFirstName('Oleksii');
+
+console.dir(User);
+
+const obj = new Object();
