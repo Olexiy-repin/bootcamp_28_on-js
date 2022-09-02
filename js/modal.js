@@ -24,3 +24,14 @@ const onOpenModalBtnElClick = event => {
 
 openModalBtnEl.addEventListener('click', onOpenModalBtnElClick);
 closeModalBtnEl.addEventListener('click', toggleModal);
+
+backdropEl.addEventListener('click', event => {
+  // console.log('event.target: ', event.target);
+  // console.log('event.currentTarget: ', event.currentTarget);
+
+  const { target, currentTarget } = event;
+
+  if (target === currentTarget) {
+    toggleModal();
+  }
+});
